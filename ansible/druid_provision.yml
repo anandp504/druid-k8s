@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    - cluster_type: "{{ cluster_type }}"
+    - dp_vault_druid_postgress_pass: "druid$123"
+    - druid_s3_bucket: "dev-databus-observations"
+  vars_files:
+    - "{{inventory_dir}}/secrets.yml"
+  environment:
+    KUBECONFIG: "{{ kubeconfig_path }}"
+  roles:
+    - druid
