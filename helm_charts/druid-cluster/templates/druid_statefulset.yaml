@@ -30,12 +30,6 @@ spec:
         type: ClusterIP
         clusterIP: None
   commonConfigMountPath: "/opt/druid/conf/druid/cluster/_common"
-  volumeMounts:
-    - mountPath: /druid/data
-      name: data-volume
-  volumes:
-    - name: data-volume
-      emptyDir: {}
   jvm.options: |-
     -server
     -XX:+UseG1GC
@@ -319,8 +313,8 @@ spec:
         runAsGroup: 0
 
       volumeMounts:
-        - mountPath: /opt/druid/var
-          name: data-volume
+        - mountPath: /druid/data
+          name: historical-volume
       volumeClaimTemplates:
       - metadata:
           name: historical-volume
@@ -400,8 +394,8 @@ spec:
         runAsGroup: 0
 
       volumeMounts:
-        - mountPath: /opt/druid/var
-          name: data-volume
+        - mountPath: /druid/data
+          name: middlemanager-volume
       volumeClaimTemplates:
       - metadata:
           name: middlemanager-volume
