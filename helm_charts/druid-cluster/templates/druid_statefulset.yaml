@@ -318,6 +318,9 @@ spec:
         runAsUser: 0
         runAsGroup: 0
 
+      volumeMounts:
+        - mountPath: /opt/druid/var
+          name: data-volume
       volumeClaimTemplates:
       - metadata:
           name: historical-volume
@@ -396,6 +399,9 @@ spec:
         runAsUser: 0
         runAsGroup: 0
 
+      volumeMounts:
+        - mountPath: /opt/druid/var
+          name: data-volume
       volumeClaimTemplates:
       - metadata:
           name: middlemanager-volume
